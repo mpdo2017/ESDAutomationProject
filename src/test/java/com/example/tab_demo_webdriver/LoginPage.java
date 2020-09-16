@@ -18,8 +18,9 @@ public class LoginPage extends PageObject {
         String expectedPageTitle = driver.getTitle();
         if (expectedPageTitle.equals(actualPageTitle)) {
             System.out.println("Verification Successful! Correct title is displayed.");
+        } else {
+            System.out.println("Verification Unsuccessful. Incorrect page title displayed.");
         }
-        System.out.println("Verification Unsuccessful. Incorrect page title displayed.");
     }
 
     /** Login as valid user
@@ -27,16 +28,6 @@ public class LoginPage extends PageObject {
      * @username
      * @password
      */
-
-    /**
-     * public ProjectPage loginValidUser () {
-     * this.username.sendKeys("mll25");
-     * this.password.sendKeys("BobRoss1125!");
-     * this.signIn_submit_btn.click();
-     * return new ProjectPage(driver);
-     * }
-     */
-
 
     public void enterUserName() { this.username.sendKeys("mll25");}
 

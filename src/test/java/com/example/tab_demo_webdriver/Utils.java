@@ -9,4 +9,5 @@ public class Utils {
     //defines a path to a chromedriver
     public static String CHROME_DRIVER_LOCATION = "chromedriver";
 
+
 }

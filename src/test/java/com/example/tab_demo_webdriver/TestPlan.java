@@ -4,8 +4,14 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class TestPlan {
@@ -32,10 +38,21 @@ public class TestPlan {
     }
     @Test
     public void projectPage () {
-        /**Creates object for project page */
         ProjectPage projectPage = new ProjectPage(driver);
-        projectPage.goToEsdPage();
-        projectPage.openEsdWorkbook();
+        driver.get(Utils.BASE_URL + "/#/workbooks/151/views");
+        System.out.println(driver.getTitle());
+        projectPage.assertPageTitle();
+        driver.navigate().to(Utils.BASE_URL + "/#/views/EnterpriseSuccessDashboardLIVE_0/SciFinderDB?:iid=1");
+
+
+    }
+   @Test
+    public void workbookPage () {
+       WorkbookPage workbookPage = new WorkbookPage(driver);
+       WebDriverWait frame = (WebDriverWait) new WebDriverWait(driver,(50)).until(ExpectedConditions.visibilityOfElementLocated(By.tagName("iframe")));
+       driver.switchTo().frame((WebElement) frame);
+
+
     }
 
     @AfterAll
