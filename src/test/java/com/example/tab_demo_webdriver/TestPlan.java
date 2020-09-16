@@ -1,11 +1,11 @@
 package com.example.tab_demo_webdriver;
 
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.util.concurrent.TimeUnit;
 
 public class TestPlan {
@@ -21,18 +21,27 @@ public class TestPlan {
     }
 
     @Test
-    public void loginPageForm () {
+    public void loginPage () {
+        /**Creates object for login page*/
+        LoginPage loginPage = new LoginPage(driver);
+        /**Logs in Standard User*/
+        loginPage.enterUserName();
+        loginPage.enterPassword();
+        loginPage.pressSubmitBtn();
 
-        LoginPageForm loginPageForm = new LoginPageForm(driver);
-        loginPageForm.enterUserName();
-        loginPageForm.enterPassword();
-        loginPageForm.pressSubmitBtn();
-
+    }
+    @Test
+    public void projectPage () {
+        /**Creates object for project page */
+        ProjectPage projectPage = new ProjectPage(driver);
+        projectPage.goToEsdPage();
+        projectPage.openEsdWorkbook();
     }
 
     @AfterAll
     public static void cleanUp() {
         driver.manage().deleteAllCookies();
+        driver.close();
         driver.quit();
     }
 }
