@@ -42,15 +42,16 @@ public class TestPlan {
         driver.get(Utils.BASE_URL + "/#/workbooks/151/views");
         System.out.println(driver.getTitle());
         projectPage.assertPageTitle();
-        driver.navigate().to(Utils.BASE_URL + "/#/views/EnterpriseSuccessDashboardLIVE_0/SciFinderDB?:iid=1");
+
 
 
     }
    @Test
     public void workbookPage () {
-       WorkbookPage workbookPage = new WorkbookPage(driver);
-       WebDriverWait frame = (WebDriverWait) new WebDriverWait(driver,(50)).until(ExpectedConditions.visibilityOfElementLocated(By.tagName("iframe")));
-       driver.switchTo().frame((WebElement) frame);
+        driver.get(Utils.BASE_URL + "/#/views/EnterpriseSuccessDashboardLIVE_0/SciFinderDB?:iid=1");
+        //driver.navigate().to(Utils.BASE_URL + "/#/views/EnterpriseSuccessDashboardLIVE_0/SciFinderDB?:iid=1");
+      // WorkbookPage workbookPage = new WorkbookPage(driver);
+       driver.switchTo().frame("")
 
 
     }
