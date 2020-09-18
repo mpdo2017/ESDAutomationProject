@@ -6,13 +6,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class WorkbookPage extends PageObject {
-   //WebElement esdWorkbook = driver.findElement(By.tagName("iframe"));
+    WebElement scifinderHover = driver.findElement
+            (By.cssSelector("[data-tb-test-id=\"content-card-select-hover\"]"));
+    WebElement scifinderWkSheet = driver.findElement
+            (By.cssSelector("[data-tb-test-id=\"view-692-card\"]"));
 
     public WorkbookPage (WebDriver driver) {
         super(driver);
 
     }
-    //public void switchToWorkbookFrame() {
-      //  this.esdWorkbook
-    //}
+    public void openWorkbook() {
+        this.scifinderWkSheet.click();
+
+    }
 }
