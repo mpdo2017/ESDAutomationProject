@@ -1,22 +1,23 @@
 package com.example.tab_demo_webdriver;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.util.concurrent.TimeUnit;
 
+import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 
 public class TestPlan {
     public static WebDriver driver = new ChromeDriver();
+
 
     @BeforeEach
     public void testPlan () {
@@ -60,7 +61,17 @@ public class TestPlan {
    }
 
     @AfterAll
-    public static void cleanUp() {
+    public static void cleanUp(ITestResult result) {
+        if(ITestResult.FAILURE == result.getStatus()){
+            try {
+                TakesScreenshot screenshot = (TakesScreenshot)driver;
+                File source = screenshot.getScreenshotAs(OutputType.FILE);
+                FileUtils.copyFile(source, new File("./screenshots/" + result.getName() + " .png"));
+                System.out.println("Screenshot taken");
+            }
+        }
+
+
         driver.manage().deleteAllCookies();
         driver.close();
         driver.quit();
