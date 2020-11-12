@@ -61,15 +61,7 @@ public class TestPlan {
    }
 
     @AfterAll
-    public static void cleanUp(ITestResult result) {
-        if(ITestResult.FAILURE == result.getStatus()){
-            try {
-                TakesScreenshot screenshot = (TakesScreenshot)driver;
-                File source = screenshot.getScreenshotAs(OutputType.FILE);
-                FileUtils.copyFile(source, new File("./screenshots/" + result.getName() + " .png"));
-                System.out.println("Screenshot taken");
-            }
-        }
+    public static void cleanUp() {
 
 
         driver.manage().deleteAllCookies();

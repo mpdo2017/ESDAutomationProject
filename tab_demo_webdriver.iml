@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Python" name="Python">
+      <configuration sdkName="Python 3.7 (base)" />
+    </facet>
+  </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
@@ -57,5 +62,6 @@
     <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-java:1.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm:7.0" level="project" />
     <orderEntry type="library" name="Maven: com.thoughtworks.qdox:qdox:2.0-M9" level="project" />
+    <orderEntry type="library" name="Python 3.7 (base) interpreter library" level="application" />
   </component>
 </module>

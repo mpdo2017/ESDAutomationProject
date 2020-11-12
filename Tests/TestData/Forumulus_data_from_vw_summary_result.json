@@ -1,0 +1,10 @@
+[
+  {
+    "kpi_metric_value": 63149.09,
+    "calculation": "YTD",
+    "kpi_target_min": 1188150,
+    "kpi_target_max": 1335000,
+    "kpi_target_outstanding": 1401750,
+    "kpi_definition": "Year-to-date recognized revenue from the Formulus product."
+  }
+]
