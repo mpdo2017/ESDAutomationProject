@@ -3,6 +3,10 @@
                 os.remove(f)
             f.write(b''.join(view_item.csv))"""
 
+server.views.populate_image(view_item, image_req_option)
+        with open(f'{FILE_PATH}/CCDAus.png', 'wb') as image:
+            image.write(view_item.image)
+
 {'_connections': None,
  '_content_url': 'EnterpriseSuccessDashboardLIVE_0',
  '_created_at': datetime.datetime(2020, 5, 13, 18, 14, 10, tzinfo=<tableauserverclient.datetime_helpers.UTC object at 0x000001F04F767F08>),
@@ -43,6 +47,7 @@
  '_updated_at': datetime.datetime(2020, 10, 20, 18, 7, 57, tzinfo=<tableauserverclient.datetime_helpers.UTC object at 0x0000027359877E88>),
  '_workbook_id': '94d2abea-bced-46d1-831c-edce132b2864',
  'tags': set()}
+
 {'_content_url': 'EnterpriseSuccessDashboardLIVE_0/sheets/SciFinderDB',
  '_created_at': datetime.datetime(2020, 5, 13, 18, 14, 10, tzinfo=<tableauserverclient.datetime_helpers.UTC object at 0x0000022B4939A048>),
  '_csv': None,

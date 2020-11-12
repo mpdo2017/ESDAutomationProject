@@ -7,7 +7,7 @@ import Tests
 
 
 class TableauServerConnection:
-    CSV_FILE_PATH = os.path.dirname(Tests.__file__)
+    FILE_PATH = os.path.dirname(Tests.__file__)
 
     username = os.getenv('USERNAME')
     password = os.getenv('PASSWORD')
@@ -18,18 +18,21 @@ class TableauServerConnection:
     # Current server version : 3.3
     server.use_server_version()
     req_option = TSC.RequestOptions(pagesize=1000)
+    csv_req_option = TSC.CSVRequestOptions()
     image_req_option = TSC.ImageRequestOptions(imageresolution=TSC.ImageRequestOptions.Resolution.High)
+    image_req_option.vf('Country', 'AUSTRALIA')
+    csv_req_option.vf('Country','AUSTRALIA')
 
     with server.auth.sign_in(tableau_auth):
         all_workbooks, pagination_item = server.workbooks.get()
         wfound = [workbook for workbook in all_workbooks if workbook.name == 'Enterprise Success Dashboard LIVE']
-        pprint(vars(wfound[0]))
+        # pprint(vars(wfound[0]))
         wconnect = server.workbooks.get_by_id('94d2abea-bced-46d1-831c-edce132b2864')
         server.workbooks.populate_views(wconnect)
         vfound = [view for view in wconnect.views if len(view.name) > 0]
-        view_item = vfound[2]
-       # pprint(vars(vfound[2]))
-
-        server.views.populate_image(view_item)
-        with open(f'{CSV_FILE_PATH}/ESD.png', 'wb') as image:
-            image.write(view_item.image)
+        view_item = vfound[21]
+        server.views.populate_csv(view_item, csv_req_option)
+        with open(f'{FILE_PATH}/CCDAus.csv', 'wb') as f:
+            if os.path.exists(f):
+                os.remove(f)
+            f.write(b''.join(view_item.csv))
